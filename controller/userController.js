@@ -135,7 +135,7 @@ const userLogout = asyncHandler(async(req, res) => {
     const { authorization } = req.headers;
 
     if (!authorization || !authorization.startsWith('Bearer ')) {
-        res.status(401).json({ message: 'Unauthorized1' }); return;
+        res.status(401).json({ message: 'Unauthorized' }); return;
     }
 
     const token = authorization.split(' ')[1];
@@ -152,12 +152,12 @@ const userLogout = asyncHandler(async(req, res) => {
         const documentData = documentSnaps.data();
 
         if (decodedToken.email !== documentData.email) {
-            res.status(401).json({ message: 'Unauthorized2' });
+            res.status(401).json({ message: 'Unauthorized' });
             return;
         }
 
         if (documentData.isRevoked == true) {
-            res.status(401).json({ message: 'Unauthorized3' }); return;
+            res.status(401).json({ message: 'Unauthorized' }); return;
         }
 
         const newtoken = '';
@@ -168,7 +168,7 @@ const userLogout = asyncHandler(async(req, res) => {
         res.status(200).json({ message: 'Logged out' });
 
     } catch (error) {
-        res.status(401).json({ message: 'Unauthorized4' });
+        res.status(401).json({ message: 'Unauthorized' });
     }
 
 });
