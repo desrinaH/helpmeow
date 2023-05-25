@@ -76,3 +76,26 @@ Error response:
   "message": "Unauthorized"
 }
 ```
+
+### Logout
+Request: 
+```
+GET /logout/:id 
+``` 
+Headers:
+```
+Authorization: Bearer your_token
+```
+Success response:
+```json
+{
+  "message": "Loged out"
+}
+```
+Error response:
+```json
+{
+  "message": "Unauthorized"
+}
+```
+
