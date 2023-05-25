@@ -52,6 +52,15 @@ Success response:
   "your_id": "user_id"
 }
 ```
+Error response:
+```json
+{
+  "message": "Email not registered"
+}
+{
+  "message": "Invalid password"
+}
+```
 ### Profile 
 Request: 
 ```
