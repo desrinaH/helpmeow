@@ -89,7 +89,7 @@ Authorization: Bearer your_token
 Success response:
 ```json
 {
-  "message": "Loged out"
+  "message": "Logged out"
 }
 ```
 Error response:
