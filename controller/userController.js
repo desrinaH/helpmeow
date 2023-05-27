@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Firestore = require('@google-cloud/firestore');
-var jwt = require('jsonwebtoken');
+//var jwt = require('jsonwebtoken');
 
 const db = new Firestore({
     projectId: 'helpmeow',
@@ -38,14 +38,14 @@ const userRegister = asyncHandler (async(req, res) => {
         return;
     }
 
-    const token = '';
+    //const token = '';
     const isRevoked = true;
 
     const documentData = { 
         email, 
         username, 
         password, 
-        token, 
+       // token, 
         isRevoked 
     };
 
@@ -76,29 +76,29 @@ const userLogin = asyncHandler (async(req, res) => {
         return;
     }
 
-    const tokenPayload = { email, timestamp: Date.now() };
+    // const tokenPayload = { email, timestamp: Date.now() };
 
-    const token = jwt.sign(tokenPayload, 'ketoprak', { expiresIn: '1h' });
+    // const token = jwt.sign(tokenPayload, 'ketoprak', { expiresIn: '1h' });
     const isRevoked = false;
 
-    await userDoc.ref.update({ token, isRevoked });
+    await userDoc.ref.update({  isRevoked });
 
-    res.status(200).json({ message: 'Login successful', your_token: token, your_id: userDoc.id });
+    res.status(200).json({ message: 'Logged in', your_id: userDoc.id });
 
 });
 
 const userProfile = asyncHandler(async(req, res) => {
     const { id } = req.params;
-    const { authorization } = req.headers;
+    //const { authorization } = req.headers;
 
-    if (!authorization || !authorization.startsWith('Bearer ')) {
-        res.status(401).json({ message: 'Unauthorized' }); return;
-    }
+    // if (!authorization || !authorization.startsWith('Bearer ')) {
+    //     res.status(401).json({ message: 'Unauthorized' }); return;
+    // }
 
-    const token = authorization.split(' ')[1];
+    // const token = authorization.split(' ')[1];
 
     try {
-        const decodedToken = jwt.verify( token, 'ketoprak' );
+        //const decodedToken = jwt.verify( token, 'ketoprak' );
         const documentRef = db.collection('users').doc(id);
         const documentSnaps = await documentRef.get();
 
@@ -108,10 +108,10 @@ const userProfile = asyncHandler(async(req, res) => {
 
         const documentData = documentSnaps.data();
 
-        if (decodedToken.email !== documentData.email) {
-            res.status(401).json({ message: 'Unauthorized' });
-            return;
-        }
+        // if (decodedToken.email !== documentData.email) {
+        //     res.status(401).json({ message: 'Unauthorized' });
+        //     return;
+        // }
 
         if (documentData.isRevoked == true) {
             res.status(401).json({ message: 'Unauthorized' }); return;
@@ -121,7 +121,7 @@ const userProfile = asyncHandler(async(req, res) => {
             email: documentData.email, 
             username: documentData.username,
             id: documentSnaps.id,
-            token: documentData.token
+            //token: documentData.token
         });
 
     } catch (error) {
@@ -132,16 +132,16 @@ const userProfile = asyncHandler(async(req, res) => {
 
 const userLogout = asyncHandler(async(req, res) => {
     const { id } = req.params;
-    const { authorization } = req.headers;
+    //const { authorization } = req.headers;
 
-    if (!authorization || !authorization.startsWith('Bearer ')) {
-        res.status(401).json({ message: 'Unauthorized' }); return;
-    }
+    // if (!authorization || !authorization.startsWith('Bearer ')) {
+    //     res.status(401).json({ message: 'Unauthorized' }); return;
+    // }
 
-    const token = authorization.split(' ')[1];
+    // const token = authorization.split(' ')[1];
 
     try {
-        const decodedToken = jwt.verify( token, 'ketoprak' );
+        //const decodedToken = jwt.verify( token, 'ketoprak' );
         const documentRef = db.collection('users').doc(id);
         const documentSnaps = await documentRef.get();
 
@@ -151,19 +151,19 @@ const userLogout = asyncHandler(async(req, res) => {
 
         const documentData = documentSnaps.data();
 
-        if (decodedToken.email !== documentData.email) {
-            res.status(401).json({ message: 'Unauthorized' });
-            return;
-        }
+        // if (decodedToken.email !== documentData.email) {
+        //     res.status(401).json({ message: 'Unauthorized' });
+        //     return;
+        // }
 
         if (documentData.isRevoked == true) {
             res.status(401).json({ message: 'Unauthorized' }); return;
         }
 
-        const newtoken = '';
+        //const newtoken = '';
         const isRevoked = true;
 
-        await documentSnaps.ref.update({ token: newtoken, isRevoked });
+        await documentSnaps.ref.update({ isRevoked });
 
         res.status(200).json({ message: 'Logged out' });
 
