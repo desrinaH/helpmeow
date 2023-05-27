@@ -66,10 +66,7 @@ Request:
 ```
 GET /profile/:id 
 ``` 
-Headers:
-```
-Authorization: Bearer your_token
-```
+
 Success response:
 ```json
 {
@@ -91,10 +88,7 @@ Request:
 ```
 GET /logout/:id 
 ``` 
-Headers:
-```
-Authorization: Bearer your_token
-```
+
 Success response:
 ```json
 {
