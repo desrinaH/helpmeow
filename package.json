@@ -1,0 +1,29 @@
+{
+  "name": "helpmeow",
+  "version": "1.0.0",
+  "description": "capstone",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desrinaH/helpmeow.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/desrinaH/helpmeow/issues"
+  },
+  "homepage": "https://github.com/desrinaH/helpmeow#readme",
+  "dependencies": {
+    "@google-cloud/firestore": "^6.6.0",
+    "@supabase/supabase-js": "^2.24.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.22"
+  }
+}
