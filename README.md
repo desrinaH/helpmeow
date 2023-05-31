@@ -42,4 +42,21 @@ POST /login
 ```
 
 Response (Success):
+```json
+{ "email": "user@example.com", 
+"your_id": "userDoc.id"}
+```
+
+Response (Error):
+```json
+{
+"message": "'Email not registered'"
+}
+```
+
+```json
+{
+"message": "'Invalid password'"
+}
+```
 
