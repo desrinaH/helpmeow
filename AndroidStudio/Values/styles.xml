@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- login_page styles -->
+
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowDisablePreview">true</item>
+		<item name="colorPrimary">#FFF8D6</item> <!-- Change to white -->
+		<item name="colorPrimaryDark">#FFF8D6</item> <!-- Change to white -->
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:background">#FFF8D6</item>
+	</style>
+
+
+	<style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">#617A55</item> <!-- Change to white -->
+		<item name="colorPrimaryDark">#617A55</item>
+		<item name="android:windowBackground">#617A55</item>
+	</style>
+
+
+
+</resources>
