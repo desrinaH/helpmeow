@@ -20,11 +20,11 @@ const contentCreate = asyncHandler (async(req, res) => {
     }
     
     const documentData = documentSnaps.data();
-    const username = documentData.username;
+    const upload_by_username = documentData.username;
 
     const {  
         photo, 
-        pet_name, 
+        name, 
         gender, 
         breed, 
         location,
@@ -32,7 +32,7 @@ const contentCreate = asyncHandler (async(req, res) => {
         role,
     } = req.body;
 
-    if (pet_name.length > 16) {
+    if (name.length > 16) {
         res.status(400).json({ message: 'Name must be no more than 16 characters'});
         return;
     }
@@ -45,14 +45,14 @@ const contentCreate = asyncHandler (async(req, res) => {
     const { data, error } = await supabase
         .from('contents')
         .insert([{
-            username,
-            photo,
-            pet_name,
-            gender,
-            breed,
-            location,
-            description,
-            role
+            photo: photo,
+            name: name,
+            gender: gender,
+            breed: breed,
+            location: location,
+            description: description,
+            upload_by_username: upload_by_username,
+            role: role
         }])
         
     if (error) {
