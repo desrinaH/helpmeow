@@ -1,5 +1,10 @@
 # Cloud Computing
 
+## Usage
+```
+http://localhost:8080/<add endpoint here>
+```
+
 ## Endpoints
 ### User Register
 Request
@@ -32,8 +37,13 @@ Response (Error):
 }
 ```
 
-
+### User Login
+Request
+```
 POST /login
+```
+
+Body:
 ```json
 {
     "email": "user@example.com",
@@ -44,19 +54,67 @@ POST /login
 Response (Success):
 ```json
 { "email": "user@example.com", 
-"your_id": "userDoc.id"}
+"your_id": "your id"}
 ```
 
 Response (Error):
 ```json
 {
-"message": "'Email not registered'"
+"message": "Email not registered"
 }
 ```
 
 ```json
 {
-"message": "'Invalid password'"
+"message": "Invalid password"
 }
 ```
 
+### User Profile
+Request:
+```
+GET /profile/:id
+```
+
+Response (Error):
+```json
+{
+"message": "User not found"
+}
+```
+```json
+{
+"message": "Unauthorized"
+}
+```
+
+Response (Success):
+```json
+{ 
+ "email": "user@example.com", 
+ "username": "user123"
+ }
+ ```
+
+### User Logout
+Request:
+```
+GET /logout/:id
+```
+Response (success):
+```json
+{
+"message": "Logged Out"
+}
+```
+Response (error):
+```json
+{
+"message": "User not found"
+}
+```
+```json
+{
+"message": "Unauthorized"
+}
+```
