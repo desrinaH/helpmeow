@@ -1,8 +1,13 @@
 # Cloud Computing
 
 ## Usage
+using local host
 ```
 http://localhost:8080/<add endpoint here>
+```
+using deployed url
+```
+https://backend-dot-helpmeow.et.r.appspot.com/<add endpoint here>
 ```
 
 ## Endpoints

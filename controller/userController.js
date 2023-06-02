@@ -23,8 +23,18 @@ const userRegister = asyncHandler (async(req, res) => {
         .where('email', '==', email)
         .get();
 
+    const usernameExists = await db
+        .collection('users')
+        .where('email', '==', email)
+        .get();
+
     if ( !emailExists.empty) {
         res.status(400).json({ message: 'Email already exists' });
+        return;
+    }
+
+    if ( !usernameExists.empty) {
+        res.status(400).json({ message: 'Username is already taken' });
         return;
     }
 

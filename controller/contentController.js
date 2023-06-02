@@ -1,13 +1,16 @@
 const asyncHandler = require("express-async-handler");
 const Firestore = require('@google-cloud/firestore');
+require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
+
+const supabaseUrl = 'https://bpsmobjqnwxpsawzapnn.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const db = new Firestore({
     projectId: 'helpmeow',
     keyFilename: './sa/helpmeow-a92698f4b6a6.json',
   });
-
-const supabase = createClient('https://bpsmobjqnwxpsawzapnn.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJwc21vYmpxbnd4cHNhd3phcG5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUyNjM1NjYsImV4cCI6MjAwMDgzOTU2Nn0.NlxGRA13HnfkrFSb52WC4BKeeKyDXw6Z1wUHRususqU');
 
 const contentCreate = asyncHandler (async(req, res) => {
     const { id } = req.params;
@@ -37,8 +40,8 @@ const contentCreate = asyncHandler (async(req, res) => {
         return;
     }
 
-    if (description.length > 500) {
-        res.status(400).json({ message: 'Description must be no more than 1000 characters'});
+    if (description.length > 100) {
+        res.status(400).json({ message: 'Description must be no more than 100 characters'});
         return;
     }
 
@@ -52,14 +55,19 @@ const contentCreate = asyncHandler (async(req, res) => {
             location: location,
             description: description,
             upload_by_username: upload_by_username,
+            created_at: new Date(Date.now()),
             role: role
         }])
         
     if (error) {
-        res.status(500).json({ error: 'Insert data failed'}); return;
-    }
-
-    res.status(201).json({ data: data});
+        console.error('Insert data error:', error);
+        res.status(500).json({ error: 'Insert data failed' });
+        return;
+      }
+          
+    console.log('Inserted data:', data);
+          
+    res.status(201).json({ data: data });
         
 });
 
