@@ -19,12 +19,14 @@
   "homepage": "https://github.com/desrinaH/helpmeow#readme",
   "dependencies": {
     "@google-cloud/firestore": "^6.6.0",
+    "@google-cloud/storage": "^6.10.1",
     "@supabase/supabase-js": "^2.24.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.1.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.22"
   }
 }
