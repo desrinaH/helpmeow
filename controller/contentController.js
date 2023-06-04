@@ -86,7 +86,7 @@ const contentCreate = asyncHandler (async(req, res) => {
 });
 
 const homePage = asyncHandler(async (req, res) => {
-    
+//GETALL
     const { data, error } = await supabase
     .from('contents')
     .select()
@@ -101,7 +101,48 @@ const homePage = asyncHandler(async (req, res) => {
 
 });
 
+const getBreed = asyncHandler(async (req, res) => {
+    const { breed } = req.params;
+//GETBreed
+
+    const { data, error } = await supabase
+    .from('contents')
+    .select()
+    .textSearch('breed', `${breed}`)
+
+    if (error) {
+        console.error('Get data error:', error);
+        res.status(500).json({ error: 'Get data failed' });
+        return;
+    }
+
+    res.status(200).json({ data: data});
+
+});
+
+const getGender = asyncHandler(async (req, res) => {
+    const { gender } = req.params;
+//GETGender
+
+    const { data, error } = await supabase
+    .from('contents')
+    .select()
+    .textSearch('gender', `${gender}`)
+
+    if (error) {
+        console.error('Get data error:', error);
+        res.status(500).json({ error: 'Get data failed' });
+        return;
+    }
+
+    res.status(200).json({ data: data});
+
+});
+
+
 module.exports = {
     contentCreate,
     homePage,
+    getBreed,
+    getGender,
 }

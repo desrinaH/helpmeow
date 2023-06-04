@@ -1,25 +1,26 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const { errorMiddleware, loggingMiddleware } = require("./middleware/errorMiddleware");
-const multer = require('multer');
-const PORT = 8080
+const express = require("express");
+const { 
+    userRegister, 
+    userLogin, 
+    userProfile, 
+    userLogout 
+} = require("./controller/userController");
+const {
+    contentCreate,
+    homePage,
+    getBreed,
+    getGender,
+} = require("./controller/contentController");
+const router = express.Router();
 
-const multerMiddleware = multer({
-  storage: multer.memoryStorage(),
-  limits: { fileSize: 5 * 1024 * 1024 }
-})
+router.post("/register", userRegister);
+router.post("/login", userLogin);
+router.get("/profile/:id", userProfile);
+router.get("/logout/:id", userLogout);
 
-app.disable('x-powered-by');
-app.use(multerMiddleware.single('file'));
+router.post("/:id/create", contentCreate);
+router.get("/home", homePage);
+router.get("/breed/:breed", getBreed);
+router.get("/gender/:gender", getGender);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}))
-
-app.use(loggingMiddleware);
-app.use("/", require("./routes"));
-app.use(errorMiddleware);
-
-app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}`);
-  });
+module.exports = router ;
