@@ -4,7 +4,6 @@ require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const { uploadImage } = require('../helper/helpers');
 
-
 const supabaseUrl = 'https://bpsmobjqnwxpsawzapnn.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
@@ -13,8 +12,6 @@ const db = new Firestore({
     projectId: 'helpmeow',
     keyFilename: './sa/helpmeow-a92698f4b6a6.json',
   });
-
-
 
 const contentCreate = asyncHandler (async(req, res) => {
     const { id } = req.params;
@@ -35,7 +32,9 @@ const contentCreate = asyncHandler (async(req, res) => {
             //photo, 
             name, 
             gender, 
-            breed, 
+            breed,
+            longitude, 
+            latitude, 
             location,
             description,
             role,
@@ -64,7 +63,9 @@ const contentCreate = asyncHandler (async(req, res) => {
                 description: description,
                 upload_by_username: upload_by_username,
                 created_at: new Date(Date.now()),
-                role: role
+                role: role,
+                longitude: longitude,
+                latitude: latitude,
             }])
             
         if (error) {
@@ -84,6 +85,23 @@ const contentCreate = asyncHandler (async(req, res) => {
         
 });
 
+const homePage = asyncHandler(async (req, res) => {
+    
+    const { data, error } = await supabase
+    .from('contents')
+    .select()
+
+    if (error) {
+        console.error('Get data error:', error);
+        res.status(500).json({ error: 'Get data failed' });
+        return;
+    }
+
+    res.status(200).json({ data: data});
+
+});
+
 module.exports = {
     contentCreate,
+    homePage,
 }
