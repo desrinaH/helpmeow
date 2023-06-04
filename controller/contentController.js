@@ -102,7 +102,7 @@ const homePage = asyncHandler(async (req, res) => {
 });
 
 const getBreed = asyncHandler(async (req, res) => {
-    const { breed } = req.params;
+    const { breed } = req.body;
 //GETBreed
 
     const { data, error } = await supabase
@@ -121,7 +121,7 @@ const getBreed = asyncHandler(async (req, res) => {
 });
 
 const getGender = asyncHandler(async (req, res) => {
-    const { gender } = req.params;
+    const { gender } = req.body;
 //GETGender
 
     const { data, error } = await supabase

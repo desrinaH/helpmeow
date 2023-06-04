@@ -20,7 +20,7 @@ router.get("/logout/:id", userLogout);
 
 router.post("/:id/create", contentCreate);
 router.get("/home", homePage);
-router.get("/breed/:breed", getBreed);
-router.get("/gender/:gender", getGender);
+router.post("/search/breed", getBreed);
+router.post("/search/gender", getGender);
 
 module.exports = router ;
