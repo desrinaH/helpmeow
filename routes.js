@@ -8,9 +8,12 @@ const {
 const {
     contentCreate,
     homePage,
-    getBreed,
+    getRole,
     getGender,
 } = require("./controller/contentController");
+const {
+    getInfo,
+} = require("./controller/infoController");
 const router = express.Router();
 
 router.post("/register", userRegister);
@@ -20,7 +23,9 @@ router.get("/logout/:id", userLogout);
 
 router.post("/:id/create", contentCreate);
 router.get("/home", homePage);
-router.post("/search/breed", getBreed);
+router.post("/search/role", getRole);
 router.post("/search/gender", getGender);
+
+router.post("/information", getInfo);
 
 module.exports = router ;

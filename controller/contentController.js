@@ -3,6 +3,7 @@ const Firestore = require('@google-cloud/firestore');
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const { uploadImage } = require('../helper/helpers');
+const { Configurantion, OpenAIApi } = require('openai');
 
 const supabaseUrl = 'https://bpsmobjqnwxpsawzapnn.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
@@ -12,6 +13,9 @@ const db = new Firestore({
     projectId: 'helpmeow',
     keyFilename: './sa/helpmeow-a92698f4b6a6.json',
   });
+
+const configuration = new Configurantion({ apiKey: process.env.OPENAI_KEY });
+const openAi = new OpenAIApi(configuration);
 
 const contentCreate = asyncHandler (async(req, res) => {
     const { id } = req.params;
@@ -52,6 +56,14 @@ const contentCreate = asyncHandler (async(req, res) => {
 
         const imageUrl = await uploadImage(myFile)
 
+        //embedding
+        const embeddingResponse = await openAi.createEmbedding({
+            model: 'text-embedding-ada-002',
+            input: `${contents.name} - ${contents.breed} - ${contents.location} - ${contents.description} - ${contents.role}`,
+        });
+
+        const [{ embedding }] = embeddingResponse.data.data();
+
         const { data, error } = await supabase
             .from('contents')
             .insert([{
@@ -66,6 +78,7 @@ const contentCreate = asyncHandler (async(req, res) => {
                 role: role,
                 longitude: longitude,
                 latitude: latitude,
+
             }])
             
         if (error) {
@@ -101,14 +114,14 @@ const homePage = asyncHandler(async (req, res) => {
 
 });
 
-const getBreed = asyncHandler(async (req, res) => {
-    const { breed } = req.body;
+const getRole = asyncHandler(async (req, res) => {
+    const { role } = req.body;
 //GETBreed
 
     const { data, error } = await supabase
     .from('contents')
     .select()
-    .textSearch('breed', `${breed}`)
+    .textSearch('breed', `${role}`)
 
     if (error) {
         console.error('Get data error:', error);
@@ -143,6 +156,6 @@ const getGender = asyncHandler(async (req, res) => {
 module.exports = {
     contentCreate,
     homePage,
-    getBreed,
+    getRole,
     getGender,
 }
