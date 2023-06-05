@@ -121,7 +121,7 @@ const getRole = asyncHandler(async (req, res) => {
     const { data, error } = await supabase
     .from('contents')
     .select()
-    .textSearch('breed', `${role}`)
+    .textSearch('role', `${role}`)
 
     if (error) {
         console.error('Get data error:', error);
