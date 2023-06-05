@@ -242,6 +242,7 @@ Response (Success):
 	  "upload_by_username":"user123",
 	  "created_at":"2023-06-01T09:44:20.585+00:00"
 	}
+	  ]
 }
 ```
 
