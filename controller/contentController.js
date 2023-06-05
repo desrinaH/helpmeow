@@ -3,7 +3,7 @@ const Firestore = require('@google-cloud/firestore');
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const { uploadImage } = require('../helper/helpers');
-const { Configurantion, OpenAIApi } = require('openai');
+const { Configuration, OpenAIApi } = require('openai');
 
 const supabaseUrl = 'https://bpsmobjqnwxpsawzapnn.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
@@ -14,7 +14,7 @@ const db = new Firestore({
     keyFilename: './sa/helpmeow-a92698f4b6a6.json',
   });
 
-const configuration = new Configurantion({ apiKey: process.env.OPENAI_KEY });
+const configuration = new Configuration({ apiKey: process.env.OPENAI_KEY });
 const openAi = new OpenAIApi(configuration);
 
 const contentCreate = asyncHandler (async(req, res) => {
@@ -59,7 +59,7 @@ const contentCreate = asyncHandler (async(req, res) => {
         //embedding
         const embeddingResponse = await openAi.createEmbedding({
             model: 'text-embedding-ada-002',
-            input: `${contents.name} - ${contents.breed} - ${contents.location} - ${contents.description} - ${contents.role}`,
+            input: `${name} - ${breed} - ${location} - ${description}`,
         });
 
         const [{ embedding }] = embeddingResponse.data.data();
@@ -78,7 +78,7 @@ const contentCreate = asyncHandler (async(req, res) => {
                 role: role,
                 longitude: longitude,
                 latitude: latitude,
-
+                embedding: embedding, 
             }])
             
         if (error) {
