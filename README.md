@@ -134,8 +134,6 @@ Creat Content :
 ```
 POST /:id/create
 ```
-
-```
 Body:
 ```json
 {
