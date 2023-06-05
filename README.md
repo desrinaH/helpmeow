@@ -123,3 +123,77 @@ Response (error):
 "message": "Unauthorized"
 }
 ```
+### Content Controller
+
+Creat Content :
+```
+Body:
+```json
+{
+  "photo": "[user@example.com](https://storage.googleapis.com/img-       helpmeow/contents/1685758505528_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg)",
+  "name":"Tom"
+  "gender": "male",
+  "breed": "scottish",
+  "longitude": "000000000"
+  "latitude": "000000000",
+  "location": "jakarta",
+  "description": "he is very cute",
+  "role": "gifter"
+  
+}
+```
+Response (Success):
+
+```json
+{
+"data": {
+    "message": "Content created successfully" }
+}
+```
+Response (error):
+```json
+{
+    "error": "Invalid request body"
+}
+```
+
+Get All Content :
+```
+GET /homePage
+```
+
+Response (success):
+```json
+{
+  "data": [
+    {
+      "id": "content_id_1",
+      "photo": "https://storage.googleapis.com/img-helpmeow/contents/1685758505528_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg",
+      "name": "Tom",
+      "gender": "male",
+      "breed": "scottish",
+      "longitude": "000000000",
+      "latitude": "000000000",
+      "location": "jakarta",
+      "description": "he is very cute",
+      "role": "gifter"
+    },
+    {
+      "id": "content_id_2",
+      "photo": "https://storage.googleapis.com/img-helpmeow/contents/1685758505528_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg",
+      "name": "Jerry",
+      "gender": "female",
+      "breed": "persian",
+      "longitude": "111111111",
+      "latitude": "111111111",
+      "location": "bandung",
+      "description": "she is adorable",
+      "role": "adopter"
+    },
+    ...
+  ]
+}
+```
+
+
+
