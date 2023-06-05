@@ -124,12 +124,7 @@ Response (error):
 }
 ```
 
-
-
-
-### Content Controller
-
-Creat Content :
+### Create Content :
 
 ```
 POST /:id/create
@@ -165,7 +160,7 @@ Response (error):
 ```
 
 
-Get All Content :
+### Get All Content :
 
 ```
 GET /home
@@ -210,7 +205,7 @@ Response (error):
 }
 ```
 
-Search by Role :
+### Search by Role :
 
 ```
 POST /search/role
@@ -255,7 +250,7 @@ Response (error):
 
 
 
-Search by Gender :
+### Search by Gender :
 
 ```
 POST /search/gender
@@ -314,7 +309,7 @@ Response (error):
 }
 ```
 
-Get Information for Information Page :
+### Get Information for Information Page :
 
 ```
 POST /information
