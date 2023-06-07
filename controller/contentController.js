@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const asyncHandler = require("express-async-handler");
 const Firestore = require('@google-cloud/firestore');
 require('dotenv').config();
@@ -49,24 +50,17 @@ const contentCreate = asyncHandler (async(req, res) => {
             return;
         }
 
-        if (description.length > 100) {
-            res.status(400).json({ message: 'Description must be no more than 100 characters'});
+        if (description.length > 200) {
+            res.status(400).json({ message: 'Description must be no more than 200 characters'});
             return;
         }
 
         const imageUrl = await uploadImage(myFile)
 
-        //embedding
-        const embeddingResponse = await openAi.createEmbedding({
-            model: 'text-embedding-ada-002',
-            input: `${name} - ${breed} - ${location} - ${description}`,
-        });
-
-        const [{ embedding }] = embeddingResponse.data.data();
-
         const { data, error } = await supabase
-            .from('contents')
-            .insert([{
+        .from('contents')
+        .insert({
+       
                 photo: imageUrl,
                 name: name,
                 gender: gender,
@@ -78,8 +72,8 @@ const contentCreate = asyncHandler (async(req, res) => {
                 role: role,
                 longitude: longitude,
                 latitude: latitude,
-                embedding: embedding, 
-            }])
+
+    });
             
         if (error) {
             console.error('Insert data error:', error);
@@ -152,10 +146,28 @@ const getGender = asyncHandler(async (req, res) => {
 
 });
 
+const searchBar = asyncHandler(async (req, res) => {
+    const { search } = req.body;
+
+    let { data, error } = await supabase
+    .rpc('search_function', { keyword: `${search}` });
+
+    if (error) {
+        console.error('Get data error:', error);
+        res.status(500).json({ error: 'Get data failed' });
+        return;
+    }
+
+    res.status(200).json({ data: data});
+
+
+});
+
 
 module.exports = {
     contentCreate,
     homePage,
     getRole,
     getGender,
+    searchBar,
 }

@@ -10,6 +10,7 @@ const {
     homePage,
     getRole,
     getGender,
+    searchBar,
 } = require("./controller/contentController");
 const {
     getInfo,
@@ -25,6 +26,7 @@ router.post("/:id/create", contentCreate);
 router.get("/home", homePage);
 router.post("/search/role", getRole);
 router.post("/search/gender", getGender);
+router.post("/search", searchBar);
 
 router.post("/information", getInfo);
 
