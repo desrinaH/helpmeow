@@ -15,8 +15,22 @@ const db = new Firestore({
     keyFilename: './sa/helpmeow-a92698f4b6a6.json',
   });
 
-const configuration = new Configuration({ apiKey: process.env.OPENAI_KEY });
-const openAi = new OpenAIApi(configuration);
+ const configuration = new Configuration({ apiKey: process.env.OPENAI_KEY });
+ const openAi = new OpenAIApi(configuration);
+
+async function generateEmbeddings(input) {
+    const configuration = new Configuration({ apiKey: process.env.OPENAI_KEY });
+    const openAi = new OpenAIApi(configuration);
+  
+    const embeddingResponse = await openAi.createEmbedding({
+    model: 'text-embedding-ada-002',
+    input,
+    })
+
+    const [{ embedding }] = embeddingResponse.data.data
+  
+     return embedding;
+  }
 
 const contentCreate = asyncHandler (async(req, res) => {
     const { id } = req.params;
@@ -55,6 +69,12 @@ const contentCreate = asyncHandler (async(req, res) => {
             return;
         }
 
+        const concated = `${name} - ${breed} - ${location} - ${description}`;
+        // Generate embedding
+        const embedding = await generateEmbeddings(concated);
+
+        console.log(embedding);
+
         const imageUrl = await uploadImage(myFile)
 
         const { data, error } = await supabase
@@ -72,7 +92,7 @@ const contentCreate = asyncHandler (async(req, res) => {
                 role: role,
                 longitude: longitude,
                 latitude: latitude,
-
+                embedding: embedding,
     });
             
         if (error) {
@@ -149,14 +169,20 @@ const getGender = asyncHandler(async (req, res) => {
 const searchBar = asyncHandler(async (req, res) => {
     const { search } = req.body;
 
-    let { data, error } = await supabase
-    .rpc('search_function', { keyword: `${search}` });
+    const embedding = await generateEmbeddings(search);
 
-    if (error) {
-        console.error('Get data error:', error);
-        res.status(500).json({ error: 'Get data failed' });
-        return;
-    }
+    const { data } = await supabase.rpc('match_documents', {
+        query_embedding: embedding,
+        match_threshold: 0.78, // Choose an appropriate threshold for your data
+        match_count: 10, // Choose the number of matches
+      })
+
+
+    // if (error) {
+    //     console.error('Get data error:', error);
+    //     res.status(500).json({ error: 'Get data failed' });
+    //     return;
+    // }
 
     res.status(200).json({ data: data});
 

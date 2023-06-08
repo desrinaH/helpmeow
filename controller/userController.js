@@ -93,7 +93,7 @@ const userLogin = asyncHandler (async(req, res) => {
 
     await userDoc.ref.update({  isRevoked });
 
-    res.status(200).json({ email: userData.email, your_id: userDoc.id });
+    res.status(200).json({ email: userData.email, your_id: userDoc.id, username: userData.username, message: 'Login successful' });
 
 });
 
