@@ -9,14 +9,10 @@ model = tf.keras.models.load_model("model.h5")
 def transform_image(pillow_image):
     data = np.asarray(pillow_image)
     data = data/255.0
-    print(data.shape)
     data = data[np.newaxis, ...] #[1,x,y,3]
-    print(data.shape)
     data = np.expand_dims(data, axis=-1)
     data = np.repeat(data, 3, axis=-1)
-    print(data.shape)
     data = tf.image.resize(data, [200,200])
-    print(data.shape)
     
     return data
 
