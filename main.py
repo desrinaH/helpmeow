@@ -21,7 +21,7 @@ def predict(x):
     pred = model(x)
     pred0 = pred[0]
     label0 = np.argmax(pred0)
-    return jenis[label0]
+    return label0
 
 app = Flask(__name__)
 
@@ -35,12 +35,12 @@ def index():
         image_bytes = file.read()
         pillow_img = Image.open(io.BytesIO(image_bytes)).convert('L')
         tensor = transform_image(pillow_img)
-        prediction = predict(tensor)
-        data = {"prediction" : int(prediction)}
+        prediction = int(predict(tensor))
+        data = {"prediction" : jenis[prediction]}
         return jsonify(data)
     
     except Exception as e:
-        return jsonify({"error" : str(e)})
+        return jsonify({"error" : str(400)})
     
     return "OK"
 
