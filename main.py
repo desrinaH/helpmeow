@@ -5,6 +5,7 @@ import numpy as np
 from flask import Flask, request,jsonify
 
 model = tf.keras.models.load_model("model.h5")
+jenis = ['Abyssinian', 'American Bobtail', 'American Curl', 'American Shorthair', 'American Wirehair', 'Balinese', 'Bengal', 'Birman', 'Bombay', 'British Shorthair', 'Burmese', 'Burmilla', 'Chartreux', 'Chausie', 'Cornish Rex', 'Cymric', 'Devon Rex', 'Domestic Longhair', 'Domestic Mediumhair', 'Egyptian Mau', 'Exotic Shorthair', 'Havana', 'Himalayan', 'Japanese Bobtail', 'Korat', 'LaPerm', 'Maine Coon', 'Manx', 'Munchkin', 'Nebelung', 'Norwegian Forest', 'Ocicat', 'Oriental Long Hair', 'Oriental Shorthair', 'Persian', 'Pixiebob', 'Ragamuffin', 'Ragdoll', 'Russian Blue', 'Scottish Fold', 'Selkirk Rex', 'Siamese', 'Siberian', 'Singapura', 'Snowshoe', 'Somali', 'Sphynx', 'Tonkinese', 'Turkish Angora', 'Turkish Van']
 
 def transform_image(pillow_image):
     data = np.asarray(pillow_image)
@@ -20,7 +21,7 @@ def predict(x):
     pred = model(x)
     pred0 = pred[0]
     label0 = np.argmax(pred0)
-    return label0
+    return jenis[label0]
 
 app = Flask(__name__)
 
