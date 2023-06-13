@@ -345,7 +345,7 @@ Response (success):
             "gender": "female",
             "breed": "sandy",
             "location": "unair",
-            "description": "jelek",
+            "description": "gendut",
             "upload_by_username": "hamayan",
             "created_at": "2023-06-08T05:16:08.909",
             "role": "gifter",
