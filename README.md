@@ -309,6 +309,53 @@ Response (error):
 }
 ```
 
+### Search Content
+```
+POST /search
+```
+Body:
+```json
+{
+	"search":"its kiki"
+}
+```
+Response (success):
+```
+{
+    "data": [
+        {
+            "id": 27,
+            "photo": "https://storage.googleapis.com/img-helpmeow/contents/1686201328713_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg",
+            "name": "kiki",
+            "gender": "male",
+            "breed": "patrick",
+            "location": "its",
+            "description": "lucu suka makan",
+            "upload_by_username": "hamayan",
+            "created_at": "2023-06-08T05:15:29.108",
+            "role": "gifter",
+            "longitude": -7.2752463,
+            "latitude": 112.7904412,
+            "similarity": 0.844733397396548
+        },
+        {
+            "id": 28,
+            "photo": "https://storage.googleapis.com/img-helpmeow/contents/1686201368757_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg",
+            "name": "lala",
+            "gender": "female",
+            "breed": "sandy",
+            "location": "unair",
+            "description": "jelek",
+            "upload_by_username": "hamayan",
+            "created_at": "2023-06-08T05:16:08.909",
+            "role": "gifter",
+            "longitude": -7.2752463,
+            "latitude": 112.7904412,
+            "similarity": 0.785308220339254
+        }
+    ]
+}
+```
 ### Get Information for Information Page :
 
 ```
