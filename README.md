@@ -365,7 +365,7 @@ POST /information
 Body:
 ```json
 {
-	"breed":"Burmlla"
+	"breed":"Burmilla"
 }
 ```
 

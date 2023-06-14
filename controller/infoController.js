@@ -24,7 +24,7 @@ const getInfo = asyncHandler ( async (req, res) => {
         const documentDoc = infoExists.docs[0];
         const documentSnaps = documentDoc.data();
         
-        res.status(200).json({ data: documentSnaps });
+        res.status(200).json(documentSnaps );
 
     } catch (error) {
         

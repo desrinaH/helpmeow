@@ -103,7 +103,7 @@ const contentCreate = asyncHandler (async(req, res) => {
             
         console.log('Inserted data:', data);
             
-        res.status(201).json({ data: data });
+        res.status(201).json({ data: data, message: 'Insert data successfully' });
 
     } catch (error) {
         console.error('Content creation error:', error);
@@ -124,7 +124,7 @@ const homePage = asyncHandler(async (req, res) => {
         return;
     }
 
-    res.status(200).json({ data: data});
+    res.status(200).json(data);
 
 });
 
@@ -143,7 +143,7 @@ const getRole = asyncHandler(async (req, res) => {
         return;
     }
 
-    res.status(200).json({ data: data});
+    res.status(200).json(data);
 
 });
 
@@ -162,7 +162,7 @@ const getGender = asyncHandler(async (req, res) => {
         return;
     }
 
-    res.status(200).json({ data: data});
+    res.status(200).json(data);
 
 });
 
@@ -174,7 +174,7 @@ const searchBar = asyncHandler(async (req, res) => {
     const { data } = await supabase.rpc('match_documents', {
         query_embedding: embedding,
         match_threshold: 0.78, // Choose an appropriate threshold for your data
-        match_count: 10, // Choose the number of matches
+        match_count: 5, // Choose the number of matches
       })
 
 
@@ -184,7 +184,7 @@ const searchBar = asyncHandler(async (req, res) => {
     //     return;
     // }
 
-    res.status(200).json({ data: data});
+    res.status(200).json(data);
 
 
 });
