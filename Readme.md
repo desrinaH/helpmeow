@@ -106,9 +106,7 @@ pip install -r requirements.txt
 
 5. Download the machine learning model from Google Drive:
 ```shell
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1eCN2VvRJ275anll37eMP0gc5eGe6dRZg' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1eCN2VvRJ275anll37eMP0gc5eGe6dRZg" -O model.hdf5 && rm -rf /tmp/cookies.txt
-
-INI BELOM DIGANTI YA KAWAN2
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1g_L8Mh2-uDW-DiZqtOWJjbchalIVMs7b' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1g_L8Mh2-uDW-DiZqtOWJjbchalIVMs7b" -O model.h5 && rm -rf /tmp/cookies.txt
 ```
 
 6. Run the Flask app using the following command:
