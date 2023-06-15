@@ -13,7 +13,7 @@ def transform_image(pillow_image):
     data = data[np.newaxis, ...] #[1,x,y,3]
     data = np.expand_dims(data, axis=-1)
     data = np.repeat(data, 3, axis=-1)
-    data = tf.image.resize(data, [200,200])
+    data = tf.image.resize(data, [180,180])
     
     return data
 
