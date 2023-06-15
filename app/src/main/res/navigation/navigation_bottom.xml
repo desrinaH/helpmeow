@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_bottom"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.helpmeow.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/activity_home" />
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.example.helpmeow.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/activity_breed" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.helpmeow.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/activity_profile" />
+</navigation>

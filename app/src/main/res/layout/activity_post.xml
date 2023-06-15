@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_yellow">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_kucing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/camera"
+        android:layout_width="181dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/rounded_login_register"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/camera"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/gallery"
+        android:layout_width="180dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_login_register"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/gallery"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/camera"
+        app:layout_constraintTop_toBottomOf="@+id/camera" />
+
+    <RelativeLayout
+        android:id="@+id/blok_nama"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+        <EditText
+            android:id="@+id/enter_nama"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/namaTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/blok_role"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="@+id/camera"
+        app:layout_constraintTop_toTopOf="@+id/blok_nama">
+
+        <EditText
+            android:id="@+id/enter_role"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/roleTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Role"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/blok_breed"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
+        app:layout_constraintStart_toStartOf="@+id/blok_nama"
+        app:layout_constraintTop_toBottomOf="@+id/blok_nama">
+
+        <EditText
+            android:id="@+id/enter_breed"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/breedTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Breed"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/blok_gender"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="@+id/blok_role"
+        app:layout_constraintTop_toBottomOf="@+id/blok_role">
+
+        <EditText
+            android:id="@+id/enter_gender"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/genderTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Gender"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/blok_description"
+        android:layout_width="359dp"
+        android:layout_height="144dp"
+        app:layout_constraintEnd_toEndOf="@+id/blok_gender"
+        app:layout_constraintStart_toStartOf="@+id/blok_breed"
+        app:layout_constraintTop_toBottomOf="@+id/blok_breed">
+
+        <EditText
+            android:id="@+id/enter_description"
+            android:layout_width="match_parent"
+            android:layout_height="111dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/descriptionTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/blok_lokasi"
+        android:layout_width="164dp"
+        android:layout_height="66dp"
+        app:layout_constraintStart_toStartOf="@+id/blok_description"
+        app:layout_constraintTop_toBottomOf="@+id/blok_description">
+
+        <EditText
+            android:id="@+id/enter_lokasi"
+            android:layout_width="284dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_google"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/lokasiTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F8F8FF"
+            android:padding="2dp"
+            android:text="Town"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/pinLocation"
+        android:layout_width="171dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_login_register"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Pin location"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/blok_lokasi"
+        app:layout_constraintEnd_toEndOf="@+id/blok_description" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="171dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_login_register"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Upload"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/pinLocation"
+        app:layout_constraintTop_toBottomOf="@+id/pinLocation" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomGuideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <include
+        layout="@layout/activity_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

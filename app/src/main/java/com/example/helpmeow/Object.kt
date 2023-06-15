@@ -1,0 +1,60 @@
+package com.example.helpmeow
+
+class Object {
+    companion object {
+        val role = arrayOf("Seeker", "Gifter")
+        val gender = arrayOf("Male", "Female")
+        val breed = listOf(
+            "Abyssinian",
+            "American Bobtail",
+            "American Curl",
+            "American Shorthair",
+            "American Wirehair",
+            "Balinese",
+            "Bengal",
+            "Birman",
+            "Bombay",
+            "British Shorthair",
+            "Burmese",
+            "Burmilla",
+            "Chartreux",
+            "Chausie",
+            "Cornish Rex",
+            "Cymric",
+            "Devon Rex",
+            "Domestic Longhair",
+            "Domestic Mediumhair",
+            "Egyptian Mau",
+            "Exotic Shorthair",
+            "Havana",
+            "Himalayan",
+            "Japanese Bobtail",
+            "Korat",
+            "LaPerm",
+            "Maine Coon",
+            "Manx",
+            "Munchkin",
+            "Nebelung",
+            "Norwegian Forest",
+            "Ocicat",
+            "Oriental Long Hair",
+            "Oriental Shorthair",
+            "Persian",
+            "Pixiebob",
+            "Ragamuffin",
+            "Ragdoll",
+            "Russian Blue",
+            "Scottish Fold",
+            "Selkirk Rex",
+            "Siamese",
+            "Siberian",
+            "Singapura",
+            "Snowshoe",
+            "Somali",
+            "Sphynx",
+            "Tonkinese",
+            "Turkish Angora",
+            "Turkish Van"
+        )
+    }
+}

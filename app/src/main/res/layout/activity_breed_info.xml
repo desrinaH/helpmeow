@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/backgroundRangeBerat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="@color/white"
+            android:padding="50dp"
+            android:text=""
+            android:textColor="@color/hijau_tua"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailInfoTextView" />
+
+        <ImageView
+            android:id="@+id/gambarKucing"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/detailInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_corner_background_breeddesc"
+            android:gravity="center"
+            android:paddingLeft="35dp"
+
+
+            android:paddingTop="80dp"
+            android:paddingRight="35dp"
+            android:paddingBottom="60dp"
+            android:text="Detail Information"
+            android:textColor="@color/hijau_tua"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gambarKucing" />
+
+
+        <TextView
+            android:id="@+id/didYouKnow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corner_background_breeddesc"
+            android:padding="15dp"
+            android:text="Did you know?"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/detailInfoTextView"
+            app:layout_constraintTop_toTopOf="@+id/detailInfoTextView" />
+
+
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@color/white"
+            android:text="Range Harga"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/RangeHarga"
+            app:layout_constraintTop_toTopOf="@+id/RangeHarga" />
+
+        <TextView
+            android:id="@+id/RangeHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:text="Range harga"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/backgroundRangeBerat"
+            app:layout_constraintTop_toTopOf="@+id/backgroundRangeBerat" />
+
+        <TextView
+            android:id="@+id/weightTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@color/white"
+            android:text="Berat Badan"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/BeratBadan"
+            app:layout_constraintTop_toTopOf="@+id/BeratBadan" />
+
+        <TextView
+            android:id="@+id/BeratBadan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:text="Berat badan"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/RangeHarga"
+            app:layout_constraintTop_toBottomOf="@+id/RangeHarga" />
+
+        <TextView
+            android:id="@+id/detailCat4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="-25dp"
+            android:background="@drawable/rounded_corner_background_breedinfo"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="3dp"
+            android:text="Breeds"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/detailInfoTextView"
+            app:layout_constraintEnd_toEndOf="@+id/detailInfoTextView" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/img_catbreedinfo"
+            app:layout_constraintEnd_toEndOf="@+id/detailInfoTextView"
+            app:layout_constraintStart_toStartOf="@+id/detailInfoTextView"
+            app:layout_constraintTop_toBottomOf="@+id/detailInfoTextView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/coklat_muda"
+    android:elevation="8dp">
+
+    <ImageButton
+        android:id="@+id/navigation_post"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/coklat_muda"
+        android:layout_weight="1"
+        android:src="@drawable/img_post"/>
+
+
+    <ImageButton
+        android:id="@+id/navigation_breed"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/coklat_muda"
+        android:layout_weight="1"
+        android:src="@drawable/img_pawprint"/>
+
+
+    <ImageButton
+        android:id="@+id/navigation_home"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/coklat_muda"
+        android:layout_weight="1"
+        android:src="@drawable/img_home" />
+
+    <ImageButton
+        android:id="@+id/navigation_favorite"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/coklat_muda"
+        android:layout_weight="1"
+        android:src="@drawable/img_like"/>
+
+    <ImageButton
+        android:id="@+id/navigation_profile"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/coklat_muda"
+        android:layout_weight="1"
+        android:src="@drawable/img_user"
+        android:contentDescription="@string/profile" />
+
+</LinearLayout>
