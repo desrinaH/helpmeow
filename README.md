@@ -124,23 +124,58 @@ Response (error):
 }
 ```
 
+### Upload Image
+```
+POST /create/image/:id
+```
+Body:
+```json
+"file": "path/to/image"
+```
+Response (success):
+```json
+[
+    {
+        "id": 38,
+        "photo": "https://storage.googleapis.com/img-helpmeow/contents/1686832508509_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg",
+        "name": null,
+        "gender": null,
+        "breed": null,
+        "location": null,
+        "description": null,
+        "upload_by_username": null,
+        "created_at": "2023-06-15T12:35:08.838306+00:00",
+        "role": null,
+        "longitude": null,
+        "latitude": null,
+        "embedding": null
+    }
+]
+```
+Response (error):
+```json
+{ 
+  "error": "Content creation failed"
+}
+```
+
 ### Create Content :
 
 ```
-POST /:id/create
+POST /create/:id
 ```
 Body:
 ```json
 {
-  "photo": "[user@example.com](https://storage.googleapis.com/img-       helpmeow/contents/1685758505528_Screenshot_2023-05-16-00-30-01-762_com.frontrow.vlog.jpg)",
-  "name":"Tom"
+  "name":"Tom",
   "gender": "male",
   "breed": "scottish",
-  "longitude": "000000000"
+  "longitude": "000000000",
   "latitude": "000000000",
   "location": "jakarta",
   "description": "he is very cute",
-  "role": "gifter"
+  "role": "gifter",
+  "id_supabase": "38"
   
 }
 ```
@@ -148,8 +183,8 @@ Response (Success):
 
 ```json
 {
-"data": {
-    "message": "Content created successfully" }
+    "data": null,
+    "message": "Insert data successfully"
 }
 ```
 Response (error):

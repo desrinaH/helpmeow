@@ -32,6 +32,49 @@ async function generateEmbeddings(input) {
      return embedding;
   }
 
+const imagePost = asyncHandler (async(req, res) => {
+    const { id } = req.params;
+    
+    try {
+        const documentRef = db.collection('users').doc(id);
+        const documentSnaps = await documentRef.get();
+
+        if (!documentSnaps.exists) {
+            res.status(401).json({ message: 'User must have account to upload' }); return;
+        }
+
+        const myFile = req.file;
+        const imageUrl = await uploadImage(myFile);
+
+        const { data, error } = await supabase
+        .from('contents')
+        .insert({photo: imageUrl})
+        .select()
+    
+    if (error) {
+        console.error('Insert data error:', error);
+        res.status(500).json({ error: 'Insert data failed' });
+        return;
+    }
+        
+     console.log('Inserted data:', data);
+        
+     res.status(201).json(data);
+    
+    //const insertedDataId = data.id; // Retrieve the ID of the inserted data
+
+    console.log('Inserted data:', data);
+
+    // res
+    //   .status(201)
+    //   .json({ id: insertedDataId, message: 'Insert data successfully' });
+    
+    } catch (error) {
+        console.error('Content creation error:', error);
+        res.status(500).json({ error: 'Content creation failed' });        
+    }
+});  
+
 const contentCreate = asyncHandler (async(req, res) => {
     const { id } = req.params;
 
@@ -46,9 +89,10 @@ const contentCreate = asyncHandler (async(req, res) => {
         const documentData = documentSnaps.data();
         const upload_by_username = documentData.username;
 
-        const myFile = req.file; // file kalo di postman
+        //const myFile = req.file; // file kalo di postman
         const {  
-            //photo, 
+            //photo,
+            id_supabase, 
             name, 
             gender, 
             breed,
@@ -75,13 +119,12 @@ const contentCreate = asyncHandler (async(req, res) => {
 
         console.log(embedding);
 
-        const imageUrl = await uploadImage(myFile)
+        //const imageUrl = await uploadImage(myFile)
 
         const { data, error } = await supabase
         .from('contents')
-        .insert({
-       
-                photo: imageUrl,
+        .update({
+                //photo: imageUrl,
                 name: name,
                 gender: gender,
                 breed: breed,
@@ -93,7 +136,8 @@ const contentCreate = asyncHandler (async(req, res) => {
                 longitude: longitude,
                 latitude: latitude,
                 embedding: embedding,
-    });
+    })
+        .eq('id', id_supabase)
             
         if (error) {
             console.error('Insert data error:', error);
@@ -189,8 +233,32 @@ const searchBar = asyncHandler(async (req, res) => {
 
 });
 
+// const searchBar = asyncHandler(async (req, res) => {
+//     const { search } = req.body;
+
+//     const embedding = await generateEmbeddings(search);
+
+//     const { data } = await supabase.rpc('match_documents', {
+//         query_embedding: embedding,
+//         match_threshold: 0.78, // Choose an appropriate threshold for your data
+//         match_count: 5, // Choose the number of matches
+//       })
+
+
+//     // if (error) {
+//     //     console.error('Get data error:', error);
+//     //     res.status(500).json({ error: 'Get data failed' });
+//     //     return;
+//     // }
+
+//     res.status(200).json(data);
+
+
+// });
+
 
 module.exports = {
+    imagePost,
     contentCreate,
     homePage,
     getRole,
