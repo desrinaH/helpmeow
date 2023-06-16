@@ -22,6 +22,10 @@ The documentation of Helpmeow! application for Bangkit Capstone Project 2023
 |       Zaky Syah Alam      | A132DKX4326 | Mobile Development | [Linkedin](https://www.linkedin.com/in/zakysyahalam)        |
 |  Khansa Yumna Dhiya’ulhaq | A043DSY2041 | Mobile Development | [Linkedin](https://www.linkedin.com/in/khansa-yumna-dhiya-ulhaq-27848b270/)        |
 
-* [Machine Learning](https://github.com/desrinaH/helpmeow/tree/ML)
-* [Mobile Development](https://github.com/desrinaH/helpmeow/tree/mobile-dev)
-* [Cloud Computing](https://github.com/desrinaH/helpmeow/tree/backend)
+# Repositories
+
+|   Learning Paths   |                                Link                                |
+| :----------------: | :----------------------------------------------------------------: |
+| Mobile Development | [Github](https://github.com/desrinaH/helpmeow/tree/ML) |
+|  Machine Learning  |  [Github](https://github.com/desrinaH/helpmeow/tree/mobile-dev)  |
+|   Cloud Computing  |   [Github](https://github.com/desrinaH/helpmeow/tree/backend)  |
