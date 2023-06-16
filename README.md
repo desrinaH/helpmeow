@@ -1,5 +1,5 @@
-## Helpmeow
-# App Preview
+# Helpmeow
+## App Preview
 The documentation of Helpmeow! application for Bangkit Capstone Project 2023
 
 ![HelpMeow](https://github.com/dolrie23/Aset-Mockup-Helpmeow/blob/c494f5afb90d7930c08f24f9eab759c4c65d6d23/Mockup/Mock%20Up%20on%20Readme.png)
