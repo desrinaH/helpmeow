@@ -1,7 +1,7 @@
 <h1 align="center">
   <img align="center" src="Layout/Logo HelpMeow.png"  width="600"></img>
 <br>
-**HelpMeow Mobile Development Readme**
+HelpMeow Mobile Development Readme
 </h1>
 
 # HelpMeow Mobile Development Project
