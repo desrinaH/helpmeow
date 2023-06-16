@@ -14,7 +14,7 @@ app.disable('x-powered-by');
 app.use(multerMiddleware.single('file'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(loggingMiddleware);
 app.use("/", require("./routes"));

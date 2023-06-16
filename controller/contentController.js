@@ -88,6 +88,7 @@ const contentCreate = asyncHandler (async(req, res) => {
         
         const documentData = documentSnaps.data();
         const upload_by_username = documentData.username;
+        const   upload_by_email = documentData.email;
 
         //const myFile = req.file; // file kalo di postman
         const {  
@@ -101,6 +102,7 @@ const contentCreate = asyncHandler (async(req, res) => {
             location,
             description,
             role,
+            status,
         } = req.body;
 
         if (name.length > 16) {
@@ -131,8 +133,10 @@ const contentCreate = asyncHandler (async(req, res) => {
                 location: location,
                 description: description,
                 upload_by_username: upload_by_username,
+                upload_by_email: upload_by_email,
                 created_at: new Date(Date.now()),
                 role: role,
+                status: status,
                 longitude: longitude,
                 latitude: latitude,
                 embedding: embedding,
@@ -232,30 +236,6 @@ const searchBar = asyncHandler(async (req, res) => {
 
 
 });
-
-// const searchBar = asyncHandler(async (req, res) => {
-//     const { search } = req.body;
-
-//     const embedding = await generateEmbeddings(search);
-
-//     const { data } = await supabase.rpc('match_documents', {
-//         query_embedding: embedding,
-//         match_threshold: 0.78, // Choose an appropriate threshold for your data
-//         match_count: 5, // Choose the number of matches
-//       })
-
-
-//     // if (error) {
-//     //     console.error('Get data error:', error);
-//     //     res.status(500).json({ error: 'Get data failed' });
-//     //     return;
-//     // }
-
-//     res.status(200).json(data);
-
-
-// });
-
 
 module.exports = {
     imagePost,
